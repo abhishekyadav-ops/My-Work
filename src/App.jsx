@@ -8,6 +8,7 @@ import {
   useMemo,
 } from "react";
 import { ArrowDown, ArrowUpRight, ChevronDown, Menu, Search, X } from "lucide-react";
+import barcodeLogo from "./assets/barcode-logo.png";
 
 /* ------------------------------------------------------------------ */
 /*  Data                                                               */
@@ -719,8 +720,12 @@ function Nav({ active, onNav, mobileOpen, setMobileOpen }) {
     <nav className="ws-nav">
       <div className="ws-nav-inner">
         <div className="ws-nav-brand">
-          <span className="ws-nav-name">Abhishek Yadav</span>
-          <span className="ws-nav-sub">AI &amp; Automation Intern</span>
+          <img
+            className="ws-nav-logo"
+            src={barcodeLogo}
+            alt="Barcode Entertainment logo"
+          />
+          
         </div>
         <div className="ws-nav-links">
           {NAV_ITEMS.map(([id, label]) => (
@@ -1161,11 +1166,23 @@ const STYLES = `
   .ws-container { max-width: 1080px; margin: 0 auto; padding: 0 28px; }
 
   .ws-nav { position: sticky; top: 0; z-index: 30; background: rgba(20,22,27,0.88); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
-  .ws-nav-inner { max-width: 1080px; margin: 0 auto; padding: 16px 28px; display: flex; justify-content: space-between; align-items: center; }
-  .ws-nav-brand { display: flex; flex-direction: column; gap: 1px; }
+  .ws-nav-inner { max-width: 1440px; margin: 0 auto; padding: 14px 28px; display: flex; justify-content: space-between; align-items: center; gap: 24px; }
+  .ws-nav-brand { display: flex; align-items: center; gap: 12px; flex: 0 0 auto; min-width: 0; }
+.ws-nav-brand { overflow: visible; }
+.ws-nav-logo {
+  display: block;
+  width: 130px;
+  height: 82px;
+  flex: 0 0 auto;
+  object-fit: contain;
+  object-position: center;
+  transform: scale(1.8);
+  transform-origin: left center;
+  margin-right: 24px; /* prevents the scaled-up logo from overlapping the nav links */
+}  .ws-nav-brand-copy { display: flex; flex-direction: column; gap: 1px; min-width: 0; }
   .ws-nav-name { color: var(--paper); font-weight: 700; font-size: 1rem; }
   .ws-nav-sub { font-size: 0.92rem; color: var(--faint); }
-  .ws-nav-links { display: flex; gap: 22px; }
+  .ws-nav-links { display: flex; align-items: center; justify-content: flex-end; gap: clamp(10px, 1.5vw, 22px); }
   .nav-link { color: var(--muted); text-decoration: none; font-size: 0.98rem; padding-bottom: 2px; border-bottom: 1px solid transparent; transition: color 0.15s ease, border-color 0.15s ease; }
   .nav-link:hover { color: var(--paper); }
   .nav-link-active { color: var(--accent); border-bottom: 1px solid var(--accent); }
@@ -1351,6 +1368,11 @@ const STYLES = `
     .modal-panel { padding: 26px; }
   }
   @media (max-width: 480px) {
+    .ws-nav-inner { padding: 10px 16px; gap: 12px; }
+    .ws-nav-logo { width: 92px; height: 60px; }
+    .ws-nav-brand { gap: 8px; }
+    .ws-nav-name { font-size: 0.92rem; }
+    .ws-nav-sub { font-size: 0.78rem; }
     .tech-groups { grid-template-columns: 1fr; }
     .stats-grid { grid-template-columns: 1fr; }
   }
